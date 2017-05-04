@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tvptApp">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<title>TV-PT</title>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="/css/myStyle.css" />
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<br/>
+		<div class="container">
+
+			<div ng-controller="AppController as $appCtrl" class="modal-demo">
+
+				<button type="button" class="btn btn-primary" ng-click="$appCtrl.newClient()">Add a new client</button>
+
+				<span class="logout"> <a ng-click="$appCtrl.todo()">LOGOUT</a> </span>
+
+				<br/> <br/>
+				<span class="logout">
+					<a ng-click="$appCtrl.changeLang('en')">EN</a> |
+					<a ng-click="$appCtrl.changeLang('pt')">PT</a> 
+				</span>
+
+				<br/> <br/>
+					<p translate="TESTE1"></p>
+				<br/> <br/>
+
+				<table class="table table-hover">
+					<tr class="header">
+						<th class="col-xs-3">Name</th>
+						<th class="col-xs-2">Username</th>
+						<th class="col-xs-3">Email</th>
+						<th class="col-xs-2">Services</th>
+						<th class="col-xs-1">Expiration Date</th>
+						<th class="col-xs- center">Actions</th>
+					</tr>
+					<tbody>
+
+						<tr ng-repeat="client in $appCtrl.clients">
+							<td>{{client.name}}</td>
+							<td>{{client.username}}</td>
+							<td>{{client.email}}</td>
+							<td> <ul> <li ng-repeat="service in client.services"> {{ service.name }} </li> </ul> </td>
+							<td> {{client.expirationDate | date:"dd/MM/yyyy"}} </td>
+							<td class="tools">
+								<span isolate-click>
+									<div class="row">
+										<div class="col-md-1"> <i class="material-icons" ng-click="$appCtrl.todo()" uib-tooltip="Edit">edit</i> </div>
+										<div class="col-md-1"> <i class="material-icons" ng-click="$appCtrl.todo()" uib-tooltip="Lock">lock</i> </div>
+										<div class="col-md-1"> <i class="material-icons" ng-click="$appCtrl.deleteClient(client)" uib-tooltip="Delete">delete</i> </div>
+									</div>
+								</span>
+							</td>
+						</tr>
+
+					</tbody>
+				</table>
+
+				<!-- Modal New Cliente -->
+				<script type="text/ng-template" id="newClientModal.html">
+					<form name="newClientForm" ng-submit="newClientForm.$valid && $ncm.ok()" novalidate>
+						<!-- HEADER -->
+						<div class="modal-header">
+							<h3 class="modal-title" id="modal-title">Create a new client</h3>
+						</div>
+						<!-- BODY -->
+						<div class="modal-body" id="modal-body">
+
+							<!-- Name -->
+							<div class="form-group" ng-class="{'has-success has-feedback': (newClientForm.$submitted || newClientForm.name.$touched) && newClientForm.name.$valid, 'has-error has-feedback': (newClientForm.$submitted || newClientForm.name.$touched) && newClientForm.name.$invalid}">
+								<label class="control-label" for="nameId">Name</label>
+								<input type="text" ng-model="$ncm.name" class="form-control" name="name" id="nameId" aria-describedby="name" placeholder="ex: John Snow" required/>
+								<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.name.$touched) && newClientForm.name.$valid"></span>
+								<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.name.$touched) && newClientForm.name.$invalid"></span>
+								<span class="help-block" ng-show="(newClientForm.$submitted || newClientForm.name.$touched) && newClientForm.name.$error.required">This is a required field.</span>
+							</div>
+
+							<!-- Email -->
+							<div class="form-group" ng-class="{'has-success has-feedback': (newClientForm.$submitted || newClientForm.email.$touched) && newClientForm.email.$valid, 'has-error has-feedback': (newClientForm.$submitted || newClientForm.email.$touched) && newClientForm.email.$invalid }">
+								<label class="control-label" for="emailId">Email</label>
+								<input type="text" ng-model="$ncm.email" class="form-control" name="email" id="emailId" aria-describedby="email" placeholder="ex: john.snow@email.com" required email />
+								<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.email.$touched) && newClientForm.email.$valid"></span>
+								<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.email.$touched) && newClientForm.email.$invalid"></span>
+								<span class="help-block" ng-show="(newClientForm.$submitted || newClientForm.email.$touched) && newClientForm.email.$error.required">This is a required field.</span>
+								<span class="help-block" ng-show="(newClientForm.$submitted || newClientForm.email.$touched) && newClientForm.email.$error.email">Email in invalid format.</span>
+							</div>
+
+							<!-- Address -->
+							<div class="form-group" ng-class="{'has-success has-feedback': (newClientForm.$submitted || newClientForm.address.$touched) && newClientForm.address.$valid, 'has-error has-feedback': (newClientForm.$submitted || newClientForm.address.$touched) && newClientForm.address.$invalid}">
+								<label class="control-label" for="addressId">Address</label>
+								<input type="text" ng-model="$ncm.address" class="form-control" name ="address" id="addressId" aria-describedby="address" placeholder="ex: 1574 Avenue Peel, Montreal" required/>
+								<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.address.$touched) && newClientForm.address.$valid"></span>
+								<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.address.$touched) && newClientForm.address.$invalid"></span>
+								<span class="help-block" ng-show="(newClientForm.$submitted || newClientForm.address.$touched) && newClientForm.address.$error.required">This is a required field.</span>
+							</div>
+
+							<!-- Phone -->
+							<div class="form-group" ng-class="{'has-success has-feedback': (newClientForm.$submitted || newClientForm.phone.$touched) && newClientForm.phone.$valid, 'has-error has-feedback': (newClientForm.$submitted || newClientForm.phone.$touched) && newClientForm.phone.$invalid}">
+								<label class="control-label" for="phoneId">Phone</label>
+								<input type="text" ng-model="$ncm.phone" class="form-control" name="phone" id="phoneId" aria-describedby="phone" placeholder="ex: (514) 642-7541" phone/>
+								<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.phone.$touched) && newClientForm.phone.$valid"></span>
+								<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.phone.$touched) && newClientForm.phone.$invalid"></span>
+								<span class="help-block" ng-show="(newClientForm.$submitted || newClientForm.phone.$touched) && newClientForm.phone.$error.phone">Phone in invalid format.</span>
+							</div>
+
+							<!-- Username TV da Sogra -->
+							<div class="form-group" ng-class="{'has-success has-feedback': (newClientForm.$submitted || newClientForm.userSogra.$touched) && newClientForm.userSogra.$valid, 'has-error has-feedback': (newClientForm.$submitted || newClientForm.userSogra.$touched) && newClientForm.userSogra.$invalid}">
+								<label class="control-label" for="userSograId">Username TV da Sogra</label>
+								<input type="text" ng-model="$ncm.userSogra" class="form-control" name="userSogra" id="userSograId" aria-describedby="Username TV da Sogra" placeholder="ex: jsnow" required alphanumeric/>
+								<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.userSogra.$touched) && newClientForm.userSogra.$valid"></span>
+								<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.userSogra.$touched) && newClientForm.userSogra.$invalid"></span>
+								<span class="help-block" ng-show="(newClientForm.$submitted || newClientForm.userSogra.$touched) && newClientForm.userSogra.$error.required">This is a required field.</span>
+								<span class="help-block" ng-show="(newClientForm.$submitted || newClientForm.userSogra.$touched) && newClientForm.userSogra.$error.alphanumeric">This field may only contain letters and numbers.</span>
+							</div>
+
+							<!-- Password TV da Sogra -->
+							<div class="form-group" ng-class="{'has-success has-feedback': (newClientForm.$submitted || newClientForm.passSogra.$touched) && newClientForm.passSogra.$valid, 'has-error has-feedback': (newClientForm.$submitted || newClientForm.passSogra.$touched) && newClientForm.passSogra.$invalid}">
+								<label class="control-label" for="passSograId">Password TV da Sogra</label>
+								<input type="password" ng-model="$ncm.passSogra" class="form-control" name="passSogra" id="passSograId" aria-describedby="Password TV da Sogra" required alphanumeric/>
+								<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.passSogra.$touched) && newClientForm.passSogra.$valid"></span>
+								<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.passSogra.$touched) && newClientForm.passSogra.$invalid"></span>
+								<span class="help-block" ng-show="(newClientForm.$submitted || newClientForm.passSogra.$touched) && newClientForm.passSogra.$error.required">This is a required field.</span>
+								<span class="help-block" ng-show="(newClientForm.$submitted || newClientForm.passSogra.$touched) && newClientForm.passSogra.$error.alphanumeric">This field may only contain letters and numbers.</span>
+							</div>
+
+							<!-- Registration Date -->
+							<div class="form-group" ng-class="{'has-success has-feedback': (newClientForm.$submitted || newClientForm.regDate.$touched) && newClientForm.regDate.$valid, 'has-error has-feedback': (newClientForm.$submitted || newClientForm.regDate.$touched) && newClientForm.regDate.$invalid}">
+								<label class="control-label" for="regDateId">Registration Date</label>
+								<input type="date" ng-model="$ncm.regDate" class="form-control" name="regDate" id="regDateId" aria-describedby="Registration Date" required>
+								<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.regDate.$touched) && newClientForm.regDate.$valid"></span>
+								<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.regDate.$touched) && newClientForm.regDate.$invalid"></span>
+								<span class="help-block" ng-show="(newClientForm.$submitted || newClientForm.regDate.$touched) && newClientForm.regDate.$error.required">This is a required field.</span>
+								<span class="help-block" ng-show="(newClientForm.$submitted || newClientForm.regDate.$touched) && newClientForm.regDate.$error.alphanumeric">Date in invalid format.</span>
+							</div>
+
+							<!-- Services -->
+							<div class="form-group">
+								<label class="control-label">Subscribed Services</label>
+								<div class="checkbox" ng-repeat="service in $ncm.servicesList">
+									<label>
+										<input type="checkbox" name="services" ng-model="service.isChecked" ng-disabled="service.isDisabled"/>
+										{{service.name}} - {{service.price | currency}}
+									</label>
+								</div>
+
+							</div>
+						</div>
+						<!-- FOOTER -->
+						<div class="modal-footer">
+							<span ng-show="newClientForm.$submitted && $ncm.formTotalErrors(newClientForm.$error).total > 0">
+								{{ $ncm.formTotalErrors(newClientForm.$error).message }}
+							</span>
+							<button class="btn btn-primary" type="submit">OK</button>
+							<button class="btn btn-warning" type="button" ng-click="$ncm.cancel()">Cancel</button>
+						</div>
+					</form>
+				</script>
+
+				<!-- Modal Confirm -->
+				<script type="text/ng-template" id="confirmModal.html">
+					<form ng-submit="$cm.ok()">
+						<!-- HEADER -->
+						<div class="modal-header">
+							<h3 class="modal-title" id="modal-title"> <span ng-bind-html="$cm.titleContent"></span> </h3>
+						</div>
+						<!-- BODY -->
+						<div class="modal-body" id="modal-body">
+							<span ng-bind-html="$cm.bodyContent"></span>
+						</div>
+						<!-- FOOTER -->
+						<div class="modal-footer">
+							<button class="btn btn-primary" type="submit">OK</button>
+							<button class="btn btn-warning" type="button" ng-click="$cm.cancel()">Cancel</button>
+						</div>
+					</form>
+				</script>
+
+			</div>
+
+		</div>
+
+		<br/>
+
+		<!-- ################################ IMPORT DEPENDENCIES ################################ -->
+		<!-- Angular.js -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<!-- Angular animate -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+		<!-- Angular sanitize -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
+		<!-- Angular Toastr -->
+		<script src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
+		<!-- Angular ui-bootstrap -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+		<!-- JQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- JQuery UI -->
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<!-- Bootstrap -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<!-- Angular Translate (i18n) -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.15.1/angular-translate.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.15.1/angular-translate-loader-url/angular-translate-loader-url.min.js"></script>
+
+    <!-- ################################ IMPORT APP FILES ################################ -->
+		<!-- Modules -->
+		<script src="/mod/client.js"></script>
+		<!-- Configuration -->
+		<script src="/cfg/appConfig.js"></script>
+		<!-- Controllers -->
+		<script src="/ctrl/AppCtrl.js"></script>
+		<script src="/ctrl/NewClientModalCtrl.js"></script>
+		<script src="/ctrl/ConfirmModalCtrl.js"></script>
+		<!-- Directives -->
+		<script src="/dir/IsolateClickDirective.js"></script>
+		<script src="/dir/EmailValidationDirective.js"></script>
+		<script src="/dir/PhoneValidationDirective.js"></script>
+		<script src="/dir/AlphanumericValidationDirective.js"></script>
+
+	</body>
+
+</html>

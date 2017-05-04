@@ -1,0 +1,56 @@
+.done-true {
+	text-decoration: line-through;
+	color: grey;
+}
+
+td.tools {
+	text-align: center;
+}
+
+td.tools i {
+	cursor: pointer;
+	font-size: 20px;
+	padding-left: 2px;
+}
+
+td.tools i:nth-child(1) {
+	padding-left: 0px;
+}
+
+.glyphicon-check, .glyphicon-unchecked {
+	font-size: 1.2em;
+	cursor: pointer;
+}
+
+.table tr.header {
+  background-color: #2E6DA4 !important;
+	color: #FFFFFF;
+}
+
+.table tbody tr > td.primary {
+  background-color: #2E6DA4 !important;
+}
+
+th:last-child {
+	text-align: center;
+}
+
+.logout {
+	float: right;
+	cursor: pointer;
+	padding-top: 6px;
+}
+
+span.help-block {
+	font-size: 11px;
+	color: #B3B3B3;
+}
+
+.table ul {
+	padding-left: 20px;
+}
+
+div.modal-footer span {
+	color: #FF0000;
+	padding-right: 15px;
+}
