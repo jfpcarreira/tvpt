@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.8.0/css/flag-icon.min.css">
 		<link rel="stylesheet" href="/css/myStyle.css" />
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -23,23 +24,50 @@
 
 	<body>
 
-		<br/>
 		<div class="container">
 
 			<div ng-controller="AppController as $appCtrl" class="modal-demo">
 
-				<button type="button" class="btn btn-primary" ng-click="$appCtrl.newClient()">Add a new client</button>
+				<nav class="navbar navbar-default">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="navbar-header nav-title">
+								<div class="navbar-header">
+									<span class="navbar-brand">TVPT</span> 
+								</div>
+							</div>
+							<div class="navbar-header nav-search">
+								<div class="navbar-center">
+									<div class="input-group">
+										<input type="text" class="form-control col-md-1" ng-model="$appCtrl.myFilter">
+										<span class="input-group-addon"> <i class="glyphicon glyphicon-search"></i> </span>
+									</div>
+								</div>
+							</div>
+							<div class="navbar-header nav-logout">
+								<div class="navbar-right">
+									<ul class="nav navbar-nav navbar-right">
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+												<span ng-class="$appCtrl.getFlagCss()"></span> <span class="caret"></span>
+											</a>
+											<ul class="dropdown-menu">
+												<li><a ng-click="$appCtrl.changeLang('gb')" href="#"><span class="flag-icon flag-icon-gb"></span> &nbsp; English</a></li>
+												<li><a ng-click="$appCtrl.changeLang('pt')" href="#"><span class="flag-icon flag-icon-pt"></span> &nbsp; Português</a></li>
+											</ul>
+										</li>
+										<li>
+											<a class="logout" ng-click="$appCtrl.todo()">LOGOUT</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</nav>
 
-				<span class="logout"> <a ng-click="$appCtrl.todo()">LOGOUT</a> </span>
+				<button type="button" class="btn btn-primary" ng-click="$appCtrl.newClient()"> <span translate="btn_new_client"></span> </button>
 
-				<br/> <br/>
-				<span class="logout">
-					<a ng-click="$appCtrl.changeLang('en')">EN</a> |
-					<a ng-click="$appCtrl.changeLang('pt')">PT</a> 
-				</span>
-
-				<br/> <br/>
-					<p translate="TESTE1"></p>
 				<br/> <br/>
 
 				<table class="table table-hover">
@@ -53,7 +81,7 @@
 					</tr>
 					<tbody>
 
-						<tr ng-repeat="client in $appCtrl.clients">
+						<tr ng-repeat="client in $appCtrl.clients | filter:$appCtrl.myFilter">
 							<td>{{client.name}}</td>
 							<td>{{client.username}}</td>
 							<td>{{client.email}}</td>

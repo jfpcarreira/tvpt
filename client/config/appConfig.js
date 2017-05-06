@@ -3,6 +3,6 @@ angular.module('tvptApp')
 		$translateProvider
 			.useSanitizeValueStrategy('sanitize')
 			.useUrlLoader('/translate')
-			.preferredLanguage('en')
-			.fallbackLanguage('en');
+			.preferredLanguage('gb')
+			.fallbackLanguage('gb');
 	}]);

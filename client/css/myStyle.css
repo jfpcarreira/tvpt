@@ -36,9 +36,9 @@ th:last-child {
 }
 
 .logout {
-	float: right;
+	color: #337ab7 !important;
+    text-decoration: none;
 	cursor: pointer;
-	padding-top: 6px;
 }
 
 span.help-block {
@@ -54,3 +54,26 @@ div.modal-footer span {
 	color: #FF0000;
 	padding-right: 15px;
 }
+
+div.nav-title {
+	width: 30%;
+	margin: 0 auto;
+	padding-left: 10px;
+}
+
+div.nav-search {
+	width: 40%;
+	margin: 0 auto;
+	padding-top: 8px;
+}
+
+div.nav-logout {
+	width: 30%;
+	margin: 0 auto;
+	padding-right: 10px;
+}
+
+div.nav-logout ul.navbar-right {
+	padding-right: 20px;
+}
+

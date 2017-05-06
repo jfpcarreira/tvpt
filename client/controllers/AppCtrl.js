@@ -118,9 +118,13 @@ angular.module('tvptApp')
 			$translate.use(lang);
 		}
 
+		// Returns the CSS flag corresponding to the current locale
+		$appCtrl.getFlagCss = function () {
+			return 'flag-icon flag-icon-' + $translate.use();
+		}
+
 		// TODO: Delete this method
 		$appCtrl.todo = function () {
 			alert('TODO');
 		}
-
 	});
