@@ -10,7 +10,7 @@ var router  = require('express').Router(),
 // Models
 var Client  = require('../models/client'),
     User    = require('../models/user'),
-    Address = require('../models/address');
+    Service = require('../models/service');
 
 
 // Routes
@@ -22,6 +22,10 @@ Client.register(router, '/clients');
 // Router for URL: <root>/api/users
 User.methods([c.HTTP_GET, c.HTTP_POST, c.HTTP_PUT, c.HTTP_DELETE]);
 User.register(router, '/users');
+
+// Router for URL: <root>/api/services
+Service.methods([c.HTTP_GET, c.HTTP_POST, c.HTTP_PUT, c.HTTP_DELETE]);
+Service.register(router, '/services');
 
 // Router for URL: <root>/api/translate
 // To get i18n json files
