@@ -3,22 +3,25 @@ var env = require('dotenv').config();
 module.exports = {
 
     // Returns the URI connection for Mongo DB Atlas
-    getMongoUri: function (env) {
-        return env.DB_URL +
-            env.DB_USERNAME + ":" +
-            env.DB_PASSWORD + "@" +
-            env.DB_NODE_PRIMARY + ":" +
-            env.DB_PORT + "," +
-            env.DB_NODE_SECONDARY1 + ":" +
-            env.DB_PORT + "," +
-            env.DB_NODE_SECONDARY2 + ":" +
-            env.DB_PORT + "/" +
-            env.DB_NAME + "?" +
-            env.DB_OPTIONS;
+    getMongoUri: function () {
+        return process.env.DB_URL +
+            process.env.DB_USERNAME + ":" +
+            process.env.DB_PASSWORD + "@" +
+            process.env.DB_NODE_PRIMARY + ":" +
+            process.env.DB_PORT + "," +
+            process.env.DB_NODE_SECONDARY1 + ":" +
+            process.env.DB_PORT + "," +
+            process.env.DB_NODE_SECONDARY2 + ":" +
+            process.env.DB_PORT + "/" +
+            process.env.DB_NAME + "?" +
+            process.env.DB_OPTIONS;
     },
 
     // Validates if the request comes from a valid source (only some devices allowed)
     isValidSource: function (req) {
+        // For devellopment propose
+        if(process.env.SERVER_TYPE == "DEV") return true;
+
         var ua = this.getUserAgentInfo(req);
         if (ua.isMobile) {
             return false;
