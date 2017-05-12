@@ -77,3 +77,14 @@ div.nav-logout ul.navbar-right {
 	padding-right: 20px;
 }
 
+div.panel-success {
+	margin-top: 25px;
+}
+
+div.panel-success .huge {
+	font-size: 40px;
+}
+
+div.panel-success .text-right {
+    margin-top: 5px;
+}

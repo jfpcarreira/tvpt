@@ -8,11 +8,13 @@
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		<title>TV-PT</title>
 
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
-		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.8.0/css/flag-icon.min.css">
-		<link rel="stylesheet" href="/css/myStyle.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.8.0/css/flag-icon.min.css"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="/css/administration.css"/>
+		<link rel="stylesheet" href="/css/fancy_checkbox.css"/>
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -181,14 +183,35 @@
 							<!-- Services -->
 							<div class="form-group">
 								<label class="control-label">Subscribed Services</label>
-								<div class="checkbox" ng-repeat="service in $ncm.servicesList">
-									<label>
-										<input type="checkbox" name="services" ng-model="service.isChecked" ng-disabled="service.isDisabled"/>
-										{{service.name}} - {{service.price | currency}}
-									</label>
+								<br/>
+								<div class="[ form-group ]" ng-repeat="service in $ncm.servicesList">
+									<input type="checkbox" name="services-checkbox" id="checkbox-{{service.id}}" autocomplete="off" ng-model="service.isChecked" ng-disabled="service.isDisabled" />
+									<div class="[ btn-group ]">
+										<label for="checkbox-{{service.id}}" class="[ btn btn-primary ]">
+											<span class="[ glyphicon glyphicon-ok ]"></span>
+											<span> </span>
+										</label>
+										<label for="checkbox-{{service.id}}" class="[ btn btn-default active ]">
+											{{service.name}}
+										</label>
+									</div>
+									<span class="label label-primary">{{service.price | currency}}</span>
 								</div>
-
 							</div>
+
+							<div class="panel panel-success">
+								<div class="panel-heading">
+									<div class="row">
+										<div class="col-xs-3">
+											<i class="fa fa-shopping-cart fa-5x"></i>
+										</div>
+										<div class="col-xs-9 text-right">
+											<div class="huge"> {{$ncm.servicesTotal() | currency}} </div>
+										</div>
+									</div>
+								</div>
+							</div>
+		
 						</div>
 						<!-- FOOTER -->
 						<div class="modal-footer">

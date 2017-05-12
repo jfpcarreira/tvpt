@@ -6,42 +6,58 @@ angular.module('tvptApp')
 
 		$ncmCtrl.servicesList = [
 			{
+				id: 1,
 				name: "TV da Sogra",
 				isChecked: true,
 				isDisabled: true,
 				price: 200
 			},
 			{
+				id: 2,
 				name: "Raspberry PI",
 				isChecked: false,
 				isDisabled: false,
 				price: 80
 			},
 			{
+				id: 3,
 				name: "SD Card",
 				isChecked: false,
 				isDisabled: false,
 				price: 30
 			},
 			{
+				id: 4,
 				name: "Power suply",
 				isChecked: false,
 				isDisabled: false,
 				price: 10
 			},
 			{
+				id: 5,
 				name: "HDMI cable",
 				isChecked: false,
 				isDisabled: false,
 				price: 10
 			},
 			{
+				id: 6,
 				name: "RJ-45 cable",
 				isChecked: false,
 				isDisabled: false,
 				price: 5
 			}
 		];
+
+		$ncmCtrl.servicesTotal = function () {
+			var total = 0;
+			$ncmCtrl.servicesList.forEach(function (service) {
+				if (service.isChecked) {
+					total += service.price;
+				}
+			});
+			return total;
+		}
 
 		$ncmCtrl.ok = function () {
 			var newClient = {

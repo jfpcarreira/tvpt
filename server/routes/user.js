@@ -1,14 +1,12 @@
 // Dependencies
 var router  = require('express').Router(),
-    utils   = require('../../tools/utils'),
-    path    = require('path');
+    utils   = require('../../tools/utils');
 
 // Router for URL: <root>/user
 
 // Routes
 // Filter all the requests to the /user url
 router.get('/*', function (req, res, next) {
-    console.log("ESTOU AQUI 1");
     // Validates if the source who originated the request is supported 
     // If its valid pass the request to the next handler
     if (utils.isValidSource(req)) next();
@@ -19,7 +17,6 @@ router.get('/*', function (req, res, next) {
 
 // Athenticate user/pass and return a valid URL
 router.get('/:user-:pass', function (req, res) {
-    console.log("ESTOU AQUI 2");
     // TODO: Fazer método para verificar que user e pass estão OK
     // TODO: Fazer método que faz query no MongoDB para obter o url original
 

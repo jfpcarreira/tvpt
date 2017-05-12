@@ -6,7 +6,7 @@ var router  = require('express').Router(),
 
 // Routes
 // Login validation for any /admin/* URL
-router.get('/*', function (req, res, next) {
+router.get('*', function (req, res, next) {
     // Validates if the user is loged in
     // If it is the request follows
     // TODO: Fazer método para validar o login
