@@ -16,12 +16,13 @@ var ClientSchema = new restful.mongoose.Schema({
 		userSogra					: { type  : String, trim : true, required  : true },
 		passSogra					: { type  : String, trim : true, required  : true },
     email       			: { type  : String, trim : true, lowercase : true, required : true, match : emailRegex },
-    address     			: [ AddressSchema ],
+    address      			: { type  : String, trim : true, required  : true },
+//    address     			: [ AddressSchema ],
     phone       			: { type  : String, trim : true, required  : true, match : phoneRegex },
     services    			: [{ type : String, enum : enumServices}],
     registrationDate	: { type  : Date, default : Date.now, required: true },
     expirationDate		: { type  : Date, default : generateExpirationDate(), required: true },
-		isActive          : { type : Boolean, default : true }
+		isActive          : { type  : Boolean, default : true }
 },
 // Options
 {

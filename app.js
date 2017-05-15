@@ -16,7 +16,7 @@ mongoose.connect(utils.getMongoUri(), function(err) {
 // Express
 var app = express();
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 
 // Login page for the administration
@@ -34,7 +34,9 @@ app.use('/api',     require('./server/routes/api'));
 // Static references
 app.use('/mod',     express.static(__dirname + '/client/modules'));
 app.use('/cfg',     express.static(__dirname + '/client/config'));
+app.use('/const',   express.static(__dirname + '/client/constant'));
 app.use('/ctrl',    express.static(__dirname + '/client/controllers'));
+app.use('/fact',    express.static(__dirname + '/client/factories'));
 app.use('/srv',     express.static(__dirname + '/client/services'));
 app.use('/dir',     express.static(__dirname + '/client/directives'));
 app.use('/css',     express.static(__dirname + '/client/css'));

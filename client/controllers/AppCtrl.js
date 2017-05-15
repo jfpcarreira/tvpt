@@ -106,11 +106,11 @@ angular.module('tvptApp')
 					genParams: params
 				}
 			})
-				.result.then(function () {
-					params.onSuccess(params.contextObj);
-				}, function () {
-					params.onCancel(params.contextObj);
-				});
+			.result.then(function () {
+				params.onSuccess(params.contextObj);
+			}, function () {
+				params.onCancel(params.contextObj);
+			});
 		}
 
 		// Changes the i18n language in use

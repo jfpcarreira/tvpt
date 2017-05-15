@@ -181,21 +181,21 @@
 							</div>
 
 							<!-- Services -->
-							<div class="form-group">
+							<div class="form-group" ng-init="$ncm.preLoadServices()">
 								<label class="control-label">Subscribed Services</label>
 								<br/>
 								<div class="[ form-group ]" ng-repeat="service in $ncm.servicesList">
-									<input type="checkbox" name="services-checkbox" id="checkbox-{{service.id}}" autocomplete="off" ng-model="service.isChecked" ng-disabled="service.isDisabled" />
+									<input type="checkbox" name="services-checkbox" id="checkbox-{{service.code}}" autocomplete="off" ng-model="service.is_selected" ng-disabled="service.is_disabled" />
 									<div class="[ btn-group ]">
-										<label for="checkbox-{{service.id}}" class="[ btn btn-primary ]">
+										<label for="checkbox-{{service.code}}" class="[ btn btn-primary ]">
 											<span class="[ glyphicon glyphicon-ok ]"></span>
 											<span> </span>
 										</label>
-										<label for="checkbox-{{service.id}}" class="[ btn btn-default active ]">
+										<label for="checkbox-{{service.code}}" class="[ btn btn-default active ]">
 											{{service.name}}
 										</label>
 									</div>
-									<span class="label label-primary">{{service.price | currency}}</span>
+									<span class="label label-primary">{{service.price.amount | currency}}</span>
 								</div>
 							</div>
 
@@ -275,10 +275,16 @@
 		<script src="/mod/client.js"></script>
 		<!-- Configuration -->
 		<script src="/cfg/appConfig.js"></script>
+		<!-- Constants -->
+		<script src="/const/resourcesConstant.js"></script>
 		<!-- Controllers -->
 		<script src="/ctrl/AppCtrl.js"></script>
 		<script src="/ctrl/NewClientModalCtrl.js"></script>
 		<script src="/ctrl/ConfirmModalCtrl.js"></script>
+		<!-- Factories -->
+		<script src="/fact/servicesService.js"></script>
+		<!-- Services -->
+		<!-- script src="/srv/servicesService.js"></script -->
 		<!-- Directives -->
 		<script src="/dir/IsolateClickDirective.js"></script>
 		<script src="/dir/EmailValidationDirective.js"></script>
