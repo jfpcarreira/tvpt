@@ -6,6 +6,10 @@ var express     = require('express'),
     mongoose    = require('mongoose');
 
 
+// Use native promises
+mongoose.Promise = global.Promise;
+
+
 // Connect to mongo DB Atlas
 mongoose.connect(utils.getMongoUri(), function(err) {
     if (err) throw err;
@@ -37,7 +41,6 @@ app.use('/cfg',     express.static(__dirname + '/client/config'));
 app.use('/const',   express.static(__dirname + '/client/constant'));
 app.use('/ctrl',    express.static(__dirname + '/client/controllers'));
 app.use('/fact',    express.static(__dirname + '/client/factories'));
-app.use('/srv',     express.static(__dirname + '/client/services'));
 app.use('/dir',     express.static(__dirname + '/client/directives'));
 app.use('/css',     express.static(__dirname + '/client/css'));
 

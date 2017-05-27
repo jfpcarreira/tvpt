@@ -29,17 +29,15 @@ angular.module('tvptApp')
 		$ncmCtrl.ok = function () {
 			var newClient = {
 				name:				$ncmCtrl.name,
-				username: 			"ABC",
-				password: 			"123",
-				userSogra: 			$ncmCtrl.userSogra,
-				passSogra: 			$ncmCtrl.passSogra,
+				user_sogra: 		$ncmCtrl.userSogra,
+				pass_sogra: 		$ncmCtrl.passSogra,
 				email: 				$ncmCtrl.email,
 				address: 			$ncmCtrl.address,
 				phone: 				$ncmCtrl.phone,
 				services: 			getSelectedServices(),
-				registrationDate: 	$ncmCtrl.regDate,
-				expirationDate: 	new Date($ncmCtrl.regDate).setFullYear(new Date($ncmCtrl.regDate).getFullYear() + 1),
-				isActive: 			true
+				registration_date: 	$ncmCtrl.regDate,
+				expiration_date: 	new Date($ncmCtrl.regDate).setFullYear(new Date($ncmCtrl.regDate).getFullYear() + 1),
+				is_active: 			true
 			};
 
 			$uibModalInstance.close(newClient);
@@ -52,9 +50,8 @@ angular.module('tvptApp')
 		function getSelectedServices() {
 			var resultado = [];
 			$ncmCtrl.servicesList.forEach(function (service) {
-				if (service.isChecked) {
-					delete service.isChecked;
-					resultado.push(service);
+				if (service.is_selected) {
+					resultado.push(service._id);
 				}
 			});
 			return resultado;

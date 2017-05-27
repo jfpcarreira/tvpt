@@ -21,7 +21,7 @@
                 .then(handleSuccess, handleError);
         }
 
-       function Create (service) {
+        function Create (service) {
             return $http.post(RESOURCES.SERVICE_REST_URL, service)
                 .then(handleSuccess, handleError);
         }

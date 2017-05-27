@@ -81,14 +81,14 @@
 						<th class="col-xs-1">Expiration Date</th>
 						<th class="col-xs- center">Actions</th>
 					</tr>
-					<tbody>
+					<tbody ng-init="$appCtrl.loadClients()">
 
 						<tr ng-repeat="client in $appCtrl.clients | filter:$appCtrl.myFilter">
 							<td>{{client.name}}</td>
 							<td>{{client.username}}</td>
 							<td>{{client.email}}</td>
 							<td> <ul> <li ng-repeat="service in client.services"> {{ service.name }} </li> </ul> </td>
-							<td> {{client.expirationDate | date:"dd/MM/yyyy"}} </td>
+							<td> {{client.expiration_date | date:"dd/MM/yyyy"}} </td>
 							<td class="tools">
 								<span isolate-click>
 									<div class="row">
@@ -282,9 +282,8 @@
 		<script src="/ctrl/NewClientModalCtrl.js"></script>
 		<script src="/ctrl/ConfirmModalCtrl.js"></script>
 		<!-- Factories -->
-		<script src="/fact/servicesService.js"></script>
-		<!-- Services -->
-		<!-- script src="/srv/servicesService.js"></script -->
+		<script src="/fact/ServicesService.js"></script>
+		<script src="/fact/ClientsService.js"></script>
 		<!-- Directives -->
 		<script src="/dir/IsolateClickDirective.js"></script>
 		<script src="/dir/EmailValidationDirective.js"></script>
