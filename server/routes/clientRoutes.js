@@ -2,7 +2,7 @@
 var router  = require('express').Router(),
     utils   = require('../../tools/utils');
 
-// Router for URL: <root>/user
+// Router for URL: <root>/client
 
 // Routes
 // Filter all the requests to the /user url

@@ -30,9 +30,9 @@ app.get('/login', function (req, res) {
 
 
 // Routes
-app.use('/user',    require('./server/routes/user'));
-app.use('/admin',   require('./server/routes/admin'));
-app.use('/api',     require('./server/routes/api'));
+app.use('/client',  require('./server/routes/clientRoutes'));
+app.use('/admin',   require('./server/routes/adminRoutes'));
+app.use('/api',     require('./server/routes/apiRoutes'));
 
 
 // Static references

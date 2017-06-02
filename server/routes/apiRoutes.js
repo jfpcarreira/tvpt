@@ -8,9 +8,9 @@ var router  = require('express').Router(),
 // Router for URL: <root>/api
 
 // Models
-var Client  = require('../models/client'),
-    User    = require('../models/user'),
-    Service = require('../models/service');
+var Client  = require('../models/clientModel'),
+    User    = require('../models/userModel'),
+    Service = require('../models/serviceModel');
 
 
 // Routes
