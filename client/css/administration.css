@@ -88,3 +88,7 @@ div.panel-success .huge {
 div.panel-success .text-right {
     margin-top: 5px;
 }
+
+ul.dropdown-menu li {
+	cursor: pointer;
+}

@@ -17,7 +17,7 @@ router.get('*', function (req, res, next) {
 
 // Home page for administration
 router.get('/', function (req, res) {
-    res.sendFile('index.html', { root: path.join(__dirname, '../..', '/client/views/private') });
+    res.sendFile('clientsList.html', { root: path.join(__dirname, '../..', '/client/views/private') });
 });
 
 

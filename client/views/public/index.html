@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tvptApp">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<title>TV-PT</title>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.8.0/css/flag-icon.min.css"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="/css/administration.css"/>
+		<link rel="stylesheet" href="/css/fancy_checkbox.css"/>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="container">
+
+            ESTOU NO INDEX PUBLICO
+		    <div ui-view> </div>
+
+		</div>
+
+		<br/>
+
+		<!-- ################################ IMPORT DEPENDENCIES ################################ -->
+		<!-- Angular.js -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<!-- Angular animate -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+		<!-- Angular sanitize -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
+		<!-- Angular Toastr -->
+		<script src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
+		<!-- Angular ui-bootstrap -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+		<!-- JQuery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- JQuery UI -->
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<!-- Bootstrap -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<!-- Angular Translate (i18n) -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.15.1/angular-translate.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.15.1/angular-translate-loader-url/angular-translate-loader-url.min.js"></script>
+		<!-- Angular UI Router -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
+
+	    <!-- ################################ IMPORT APP FILES ################################ -->
+		<!-- Modules -->
+		<script src="/mod/tvptApp.js"></script>
+		<!-- Configuration -->
+		<script src="/cfg/translateConfig.js"></script>
+		<script src="/cfg/uiRouterConfig.js"></script>
+		<!-- Constants -->
+		<script src="/const/resourcesConstant.js"></script>
+		<!-- Controllers -->
+		<script src="/ctrl/AppCtrl.js"></script>
+		<script src="/ctrl/NewClientModalCtrl.js"></script>
+		<script src="/ctrl/ConfirmModalCtrl.js"></script>
+        <script src="/ctrl/LoginCtrl.js"></script>
+		<!-- Factories -->
+		<script src="/fact/ServicesService.js"></script>
+		<script src="/fact/ClientsService.js"></script>
+		<!-- Directives -->
+		<script src="/dir/IsolateClickDirective.js"></script>
+		<script src="/dir/EmailValidationDirective.js"></script>
+		<script src="/dir/PhoneValidationDirective.js"></script>
+		<script src="/dir/AlphanumericValidationDirective.js"></script>
+
+	</body>
+
+</html>
