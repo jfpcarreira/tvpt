@@ -1,9 +1,10 @@
 angular.module('tvptApp')
-	.controller('LoginController', function ($translate) {
+	.controller('LoginController', function ($state) {
 		var $loginCtrl = this;
 
 		$loginCtrl.login = function () {
 			alert("TODO");
+			$state.go('admin.list');
 		}
 
 	});

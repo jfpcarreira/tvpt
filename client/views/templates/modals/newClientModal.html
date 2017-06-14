@@ -1,0 +1,117 @@
+<form name="newClientForm" ng-submit="newClientForm.$valid && $ncm.ok()" novalidate>
+    <!-- HEADER -->
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Create a new client</h3>
+    </div>
+    <!-- BODY -->
+    <div class="modal-body" id="modal-body">
+
+        <!-- Name -->
+        <div class="form-group" ng-class="{'has-success has-feedback': (newClientForm.$submitted || newClientForm.name.$touched) && newClientForm.name.$valid, 'has-error has-feedback': (newClientForm.$submitted || newClientForm.name.$touched) && newClientForm.name.$invalid}">
+            <label class="control-label" for="nameId">Name</label>
+            <input type="text" ng-model="$ncm.name" class="form-control" name="name" id="nameId" aria-describedby="name" placeholder="ex: John Snow" required/>
+            <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.name.$touched) && newClientForm.name.$valid"></span>
+            <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.name.$touched) && newClientForm.name.$invalid"></span>
+            <span class="help-block" ng-show="(newClientForm.$submitted || newClientForm.name.$touched) && newClientForm.name.$error.required">This is a required field.</span>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group" ng-class="{'has-success has-feedback': (newClientForm.$submitted || newClientForm.email.$touched) && newClientForm.email.$valid, 'has-error has-feedback': (newClientForm.$submitted || newClientForm.email.$touched) && newClientForm.email.$invalid }">
+            <label class="control-label" for="emailId">Email</label>
+            <input type="text" ng-model="$ncm.email" class="form-control" name="email" id="emailId" aria-describedby="email" placeholder="ex: john.snow@email.com" required email />
+            <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.email.$touched) && newClientForm.email.$valid"></span>
+            <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.email.$touched) && newClientForm.email.$invalid"></span>
+            <span class="help-block" ng-show="(newClientForm.$submitted || newClientForm.email.$touched) && newClientForm.email.$error.required">This is a required field.</span>
+            <span class="help-block" ng-show="(newClientForm.$submitted || newClientForm.email.$touched) && newClientForm.email.$error.email">Email in invalid format.</span>
+        </div>
+
+        <!-- Address -->
+        <div class="form-group" ng-class="{'has-success has-feedback': (newClientForm.$submitted || newClientForm.address.$touched) && newClientForm.address.$valid, 'has-error has-feedback': (newClientForm.$submitted || newClientForm.address.$touched) && newClientForm.address.$invalid}">
+            <label class="control-label" for="addressId">Address</label>
+            <input type="text" ng-model="$ncm.address" class="form-control" name ="address" id="addressId" aria-describedby="address" placeholder="ex: 1574 Avenue Peel, Montreal" required/>
+            <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.address.$touched) && newClientForm.address.$valid"></span>
+            <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.address.$touched) && newClientForm.address.$invalid"></span>
+            <span class="help-block" ng-show="(newClientForm.$submitted || newClientForm.address.$touched) && newClientForm.address.$error.required">This is a required field.</span>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group" ng-class="{'has-success has-feedback': (newClientForm.$submitted || newClientForm.phone.$touched) && newClientForm.phone.$valid, 'has-error has-feedback': (newClientForm.$submitted || newClientForm.phone.$touched) && newClientForm.phone.$invalid}">
+            <label class="control-label" for="phoneId">Phone</label>
+            <input type="text" ng-model="$ncm.phone" class="form-control" name="phone" id="phoneId" aria-describedby="phone" placeholder="ex: (514) 642-7541" phone/>
+            <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.phone.$touched) && newClientForm.phone.$valid"></span>
+            <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.phone.$touched) && newClientForm.phone.$invalid"></span>
+            <span class="help-block" ng-show="(newClientForm.$submitted || newClientForm.phone.$touched) && newClientForm.phone.$error.phone">Phone in invalid format.</span>
+        </div>
+
+        <!-- Username TV da Sogra -->
+        <div class="form-group" ng-class="{'has-success has-feedback': (newClientForm.$submitted || newClientForm.userSogra.$touched) && newClientForm.userSogra.$valid, 'has-error has-feedback': (newClientForm.$submitted || newClientForm.userSogra.$touched) && newClientForm.userSogra.$invalid}">
+            <label class="control-label" for="userSograId">Username TV da Sogra</label>
+            <input type="text" ng-model="$ncm.userSogra" class="form-control" name="userSogra" id="userSograId" aria-describedby="Username TV da Sogra" placeholder="ex: jsnow" required alphanumeric/>
+            <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.userSogra.$touched) && newClientForm.userSogra.$valid"></span>
+            <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.userSogra.$touched) && newClientForm.userSogra.$invalid"></span>
+            <span class="help-block" ng-show="(newClientForm.$submitted || newClientForm.userSogra.$touched) && newClientForm.userSogra.$error.required">This is a required field.</span>
+            <span class="help-block" ng-show="(newClientForm.$submitted || newClientForm.userSogra.$touched) && newClientForm.userSogra.$error.alphanumeric">This field may only contain letters and numbers.</span>
+        </div>
+
+        <!-- Password TV da Sogra -->
+        <div class="form-group" ng-class="{'has-success has-feedback': (newClientForm.$submitted || newClientForm.passSogra.$touched) && newClientForm.passSogra.$valid, 'has-error has-feedback': (newClientForm.$submitted || newClientForm.passSogra.$touched) && newClientForm.passSogra.$invalid}">
+            <label class="control-label" for="passSograId">Password TV da Sogra</label>
+            <input type="password" ng-model="$ncm.passSogra" class="form-control" name="passSogra" id="passSograId" aria-describedby="Password TV da Sogra" required alphanumeric/>
+            <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.passSogra.$touched) && newClientForm.passSogra.$valid"></span>
+            <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.passSogra.$touched) && newClientForm.passSogra.$invalid"></span>
+            <span class="help-block" ng-show="(newClientForm.$submitted || newClientForm.passSogra.$touched) && newClientForm.passSogra.$error.required">This is a required field.</span>
+            <span class="help-block" ng-show="(newClientForm.$submitted || newClientForm.passSogra.$touched) && newClientForm.passSogra.$error.alphanumeric">This field may only contain letters and numbers.</span>
+        </div>
+
+        <!-- Registration Date -->
+        <div class="form-group" ng-class="{'has-success has-feedback': (newClientForm.$submitted || newClientForm.regDate.$touched) && newClientForm.regDate.$valid, 'has-error has-feedback': (newClientForm.$submitted || newClientForm.regDate.$touched) && newClientForm.regDate.$invalid}">
+            <label class="control-label" for="regDateId">Registration Date</label>
+            <input type="date" ng-model="$ncm.regDate" class="form-control" name="regDate" id="regDateId" aria-describedby="Registration Date" required>
+            <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.regDate.$touched) && newClientForm.regDate.$valid"></span>
+            <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="(newClientForm.$submitted || newClientForm.regDate.$touched) && newClientForm.regDate.$invalid"></span>
+            <span class="help-block" ng-show="(newClientForm.$submitted || newClientForm.regDate.$touched) && newClientForm.regDate.$error.required">This is a required field.</span>
+            <span class="help-block" ng-show="(newClientForm.$submitted || newClientForm.regDate.$touched) && newClientForm.regDate.$error.alphanumeric">Date in invalid format.</span>
+        </div>
+
+        <!-- Services -->
+        <div class="form-group" ng-init="$ncm.preLoadServices()">
+            <label class="control-label">Subscribed Services</label>
+            <br/>
+            <div class="[ form-group ]" ng-repeat="service in $ncm.servicesList">
+                <input type="checkbox" name="services-checkbox" id="checkbox-{{service.code}}" autocomplete="off" ng-model="service.is_selected" ng-disabled="service.is_disabled" />
+                <div class="[ btn-group ]">
+                    <label for="checkbox-{{service.code}}" class="[ btn btn-primary ]">
+                        <span class="[ glyphicon glyphicon-ok ]"></span>
+                        <span> </span>
+                    </label>
+                    <label for="checkbox-{{service.code}}" class="[ btn btn-default active ]">
+                        {{service.name}}
+                    </label>
+                </div>
+                <span class="label label-primary">{{service.price.amount | currency}}</span>
+            </div>
+        </div>
+
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <i class="fa fa-shopping-cart fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9 text-right">
+                        <div class="huge"> {{$ncm.servicesTotal() | currency}} </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- FOOTER -->
+    <div class="modal-footer">
+        <span ng-show="newClientForm.$submitted && $ncm.formTotalErrors(newClientForm.$error).total > 0">
+            {{ $ncm.formTotalErrors(newClientForm.$error).message }}
+        </span>
+        <button class="btn btn-primary" type="submit">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="$ncm.cancel()">Cancel</button>
+    </div>
+</form>

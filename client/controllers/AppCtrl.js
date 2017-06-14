@@ -1,5 +1,5 @@
 angular.module('tvptApp')
-	.controller('AppController', function (toastr, $uibModal, $translate, ClientsService) {
+	.controller('AppController', function (toastr, $uibModal, $translate, $location, $state, ClientsService) {
 		var $appCtrl = this;
 
 		// Initializes the list of services
@@ -17,7 +17,7 @@ angular.module('tvptApp')
 			$uibModal.open({
 				ariaLabelledBy: 'modal-title',
 				ariaDescribedBy: 'modal-body',
-				templateUrl: 'newClientModal.html',
+				templateUrl: '/modal/newClientModal.html',
 				controller: 'NewClientModalCtrl',
 				controllerAs: '$ncm'
 			})
@@ -51,17 +51,17 @@ angular.module('tvptApp')
 			Generic private method to create a confirm modal. Receives the following parameter:
 
 			var params = {
-				contextObj:			The context object that will be passed to the onSuccess and onCancel functions
+				contextObj:		The context object that will be passed to the onSuccess and onCancel functions
 				titleContent: 	The title that will be shown on the modal
-				bodyContent: 		The content that will be shown on the modal
-				onSuccess: 			The function that will be executed when user press OK button
-				onCancel: 			The function that will be executed when user press CANCEL button
+				bodyContent: 	The content that will be shown on the modal
+				onSuccess: 		The function that will be executed when user press OK button
+				onCancel: 		The function that will be executed when user press CANCEL button
 		*/
 		function newConfirm(params) {
 			$uibModal.open({
 				ariaLabelledBy: 'modal-title',
 				ariaDescribedBy: 'modal-body',
-				templateUrl: 'confirmModal.html',
+				templateUrl: '/modal/confirmModal.html',
 				controller: 'ConfirmModalCtrl',
 				controllerAs: '$cm',
 				resolve: {
@@ -83,6 +83,12 @@ angular.module('tvptApp')
 		// Returns the CSS flag corresponding to the current locale
 		$appCtrl.getFlagCss = function () {
 			return 'flag-icon flag-icon-' + $translate.use();
+		}
+
+		// Logouts the user
+		$appCtrl.logout = function () {
+			alert('TODO');
+			$state.go('login');
 		}
 
 		// TODO: Delete this method

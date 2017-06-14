@@ -46,9 +46,11 @@ app.use('/ctrl',    express.static(__dirname + '/client/controllers'));
 app.use('/fact',    express.static(__dirname + '/client/factories'));
 app.use('/dir',     express.static(__dirname + '/client/directives'));
 app.use('/css',     express.static(__dirname + '/client/css'));
+app.use('/img',     express.static(__dirname + '/client/img'));
 app.use('/pub',     express.static(__dirname + '/client/views/public'));
 app.use('/prv',     express.static(__dirname + '/client/views/private'));
 app.use('/tmpl',    express.static(__dirname + '/client/views/templates'));
+app.use('/modal',   express.static(__dirname + '/client/views/templates/modals'));
 
 
 // Any other unmapped path will return 404 - Page not found
