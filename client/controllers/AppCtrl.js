@@ -1,5 +1,11 @@
-angular.module('tvptApp')
-	.controller('AppController', function (toastr, $uibModal, $translate, $location, $state, ClientsService) {
+(function () {
+  'use	strict';
+
+	angular
+		.module('tvptApp')
+		.controller('AppController', controller);
+
+	function controller(toastr, $uibModal, $translate, $location, $state, ClientsService) {
 		var $appCtrl = this;
 
 		// Initializes the list of services
@@ -95,4 +101,6 @@ angular.module('tvptApp')
 		$appCtrl.todo = function () {
 			alert('TODO');
 		}
-	});
+	}
+
+})();

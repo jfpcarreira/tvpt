@@ -1,5 +1,11 @@
-angular.module('tvptApp')
-	.directive('email', function() {
+(function () {
+  'use	strict';
+
+	angular
+		.module('tvptApp')
+		.directive('email', setEmailDirective);
+
+	function setEmailDirective() {
 		return {
 			require: 'ngModel',
 			link: function(scope, elm, attrs, ctrl) {
@@ -15,4 +21,6 @@ angular.module('tvptApp')
 				};
 			}
 		};
-	});
+	}
+
+})();

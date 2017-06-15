@@ -1,9 +1,15 @@
-angular.module('tvptApp')
-	.constant('RESOURCES', (function() {
-        var constants = {};
+(function () {
+  'use	strict';
 
-        constants.SERVICE_REST_URL  = '/api/services/';
-        constants.CLIENT_REST_URL   = '/api/clients/';
+    angular
+        .module('tvptApp')
+        .constant('RESOURCES', (function() {
+            var constants = {};
 
-        return constants
-    })());
+            constants.SERVICE_REST_URL  = '/api/services/';
+            constants.CLIENT_REST_URL   = '/api/clients/';
+
+            return constants
+        })());
+
+})();

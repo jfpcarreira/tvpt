@@ -1,5 +1,11 @@
-angular.module('tvptApp')
-	.controller('ConfirmModalCtrl', function (toastr, $uibModalInstance, genParams, $sce) {
+(function () {
+  'use	strict';
+
+	angular
+		.module('tvptApp')
+		.controller('ConfirmModalCtrl', controller);
+
+	function controller(toastr, $uibModalInstance, genParams, $sce) {
 		var $cmCtrl = this;
 
 		$cmCtrl.titleContent = $sce.trustAsHtml(genParams.titleContent);
@@ -12,4 +18,6 @@ angular.module('tvptApp')
 		$cmCtrl.cancel = function () {
 			$uibModalInstance.dismiss('cancel');
 		};
-	});
+	}
+
+})();

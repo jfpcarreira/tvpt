@@ -1,5 +1,11 @@
-angular.module('tvptApp')
-	.controller('NewClientModalCtrl', function ($uibModalInstance, toastr, ServicesService) {
+(function () {
+  'use	strict';
+
+	angular
+		.module('tvptApp')
+		.controller('NewClientModalCtrl', controller);
+
+	function controller($uibModalInstance, toastr, ServicesService) {
 		var $ncmCtrl = this;
 
 		$ncmCtrl.regDate = new Date();
@@ -68,4 +74,6 @@ angular.module('tvptApp')
 			};
 		};
 
-	});
+	}
+
+})();

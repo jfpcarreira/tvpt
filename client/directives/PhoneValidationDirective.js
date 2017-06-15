@@ -1,5 +1,11 @@
-angular.module('tvptApp')
-	.directive('phone', function() {
+(function () {
+  'use	strict';
+
+	angular
+		.module('tvptApp')
+		.directive('phone', setPhoneDirective);
+
+	function setPhoneDirective() {
 		return {
 			require: 'ngModel',
 			link: function(scope, elm, attrs, ctrl) {
@@ -11,4 +17,6 @@ angular.module('tvptApp')
 				};
 			}
 		};
-	});
+	}
+
+})();
