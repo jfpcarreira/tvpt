@@ -8,6 +8,7 @@
 
             constants.SERVICE_REST_URL  = '/api/services/';
             constants.CLIENT_REST_URL   = '/api/clients/';
+            constants.USER_REST_URL     = '/api/users/';
 
             return constants
         })());

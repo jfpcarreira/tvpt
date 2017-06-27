@@ -21,9 +21,15 @@
         abstract: true,
         url: '/admin',
         templateUrl: '/tmpl/templateAdmin.html',
-        onEnter: function () {
-          console.log("enter admin abstract");
-//          $state.target('login');
+        resolve: {
+          userAuth: function ($state) {
+            // TODO: Alterar true por função que retorna se user está autenticado
+            if (false) {
+              $state.go('login');
+            }
+            // TODO: Retornar um objecto com info do user autenticado
+            return { value: true };
+          }
         }
       })
       .state('admin.list', {

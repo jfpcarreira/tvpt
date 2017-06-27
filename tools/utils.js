@@ -20,7 +20,7 @@ module.exports = {
     // Validates if the request comes from a valid source (only some devices allowed)
     isValidSource: function (req) {
         // For devellopment propose
-        if(process.env.SERVER_TYPE == "DEV") return true;
+        if (process.env.SERVER_TYPE == "DEV") return true;
 
         var ua = this.getUserAgentInfo(req);
         if (ua.isMobile) {
@@ -70,6 +70,32 @@ module.exports = {
         }
 
         return $;
-    }
+    },
 
+    // Creates a new token and returns it
+    getNewToken: function (user, res) {
+        // JWT PAYLOAD
+        var payload = {
+            sub: user.id
+        }
+
+        // JWT TOKEN
+        var token = jwt.encode(payload, process.env.TOKEN_SECRET);
+
+        // Response
+        return {
+            user: user.toJSON(),
+            token: token
+        };
+    },
+
+    // Creates a new token and returns it
+    getDecodedToken: function (token, res) {
+        var decoded = jwt.decode(token, process.env.TOKEN_SECRET);
+
+        // Response
+        return {
+            token: decoded
+        };
+    }
 };
