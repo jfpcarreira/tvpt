@@ -39,17 +39,19 @@
 	</nav>
 
 	<button type="button" class="btn btn-primary" ng-click="$appCtrl.newClient()"> <span translate="btn_new_client"></span> </button>
+	<!-- TO DELETE -->
+	<button type="button" class="btn btn-primary" ng-click="$appCtrl.newUser()"> <span translate="btn_new_user"></span> </button>
 
 	<br/> <br/>
 
 	<table class="table table-hover">
 		<tr class="header">
-			<th class="col-xs-3">Name</th>
-			<th class="col-xs-2">Username</th>
-			<th class="col-xs-3">Email</th>
-			<th class="col-xs-2">Services</th>
-			<th class="col-xs-1">Expiration Date</th>
-			<th class="col-xs- center">Actions</th>
+			<th class="col-xs-3"> <span translate="table_header_name"></span> </th>
+			<th class="col-xs-2"> <span translate="table_header_username"></span> </th>
+			<th class="col-xs-3"> <span translate="table_header_email"></span> </th>
+			<th class="col-xs-2"> <span translate="table_header_services"></span> </th>
+			<th class="col-xs-1"> <span translate="table_header_exp_date"></span> </th>
+			<th class="col-xs- center"> <span translate="table_header_actions"></span> </th>
 		</tr>
 		<tbody ng-init="$appCtrl.loadClients()">
 

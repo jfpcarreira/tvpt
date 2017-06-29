@@ -5,7 +5,7 @@
     .module('tvptApp')
     .config(setRouting);
 
-  function setRouting($stateProvider, $urlRouterProvider) {
+  function setRouting($stateProvider, $urlRouterProvider, $httpProvider) {
 
     $stateProvider
       .state('login', {
@@ -23,12 +23,14 @@
         templateUrl: '/tmpl/templateAdmin.html',
         resolve: {
           userAuth: function ($state) {
-            // TODO: Alterar true por função que retorna se user está autenticado
-            if (false) {
+            // TODO: Alterar para função isUserAuthenticated que retorna se user está autenticado
+            if (true) {
+              // TODO: Retornar um objecto com info do user autenticado
+              return { value: true };
+            }
+            else {
               $state.go('login');
             }
-            // TODO: Retornar um objecto com info do user autenticado
-            return { value: true };
           }
         }
       })
@@ -42,6 +44,8 @@
         }
       })
 
+      // Injects interceptor for authentication
+//      $httpProvider.interceptors.push('AuthInterceptor');
   }
 
 })();

@@ -13,12 +13,11 @@
         auth.register   = Register;
         auth.getToken   = GetToken;
 
-        // TODO: Usar o ficheiro resourcesConstant.js
-        var loginUrl = '/api/login';
-        var registerUrl = '/api/register';
+        return auth;
+
 
         function Login(username, password) {
-            return $http.post(RESOURCES.USER_REST_URL, {
+            return $http.post(RESOURCES.USER_LOGIN_URL, {
                 username: username,
                 password: password
             }).success(authSuccess);
@@ -29,16 +28,16 @@
         }
 
         function Register() {
-            return $http.post(RESOURCES.USER_REST_URL, {
+            return $http.post(RESOURCES.USER_REGISTER_URL, {
                 email: "",
                 password: ""
             }).success(authSuccess);
         }
 
-        // TODO: REMOVE
+        // TODO: REMOVE THIS METHOD
         function GetToken(token) {
             console.log('auth token: ' + token);
-            return $http.post("/api/getToken", {
+            return $http.post("/api/users/getToken", {
                 token: token
             });
         }

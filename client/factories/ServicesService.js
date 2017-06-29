@@ -26,9 +26,8 @@
                 .then(handleSuccess, handleError);
         }
 
-        // TODO: Apenas receber o service e usar o _id disponibilizado pelo mongoDB
-        function Update (id, service) {
-            return $http.put(RESOURCES.SERVICE_REST_URL + id, service)
+        function Update (service) {
+            return $http.put(RESOURCES.SERVICE_REST_URL + service._id, service)
                 .then(handleSuccess, handleError);
         }
 

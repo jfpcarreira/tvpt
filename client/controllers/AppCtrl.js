@@ -5,7 +5,7 @@
 		.module('tvptApp')
 		.controller('AppController', controller);
 
-	function controller(toastr, $uibModal, $translate, $location, $state, ClientsService) {
+	function controller(toastr, $uibModal, $translate, $location, $state, ClientsService, UsersService) {
 		var $appCtrl = this;
 
 		// Initializes the list of services
@@ -100,6 +100,19 @@
 		// TODO: Delete this method
 		$appCtrl.todo = function () {
 			alert('TODO');
+		}
+
+		// TODO: Delete this method
+		$appCtrl.newUser = function () {
+			var newUser = new User();
+
+			newUser.name 		= 'João Carreira';
+			newUser.username 	= 'jfpcarreira';
+			newUser.password 	= 'mastersecure';
+			newUser.email 		= 'jfpcarreira@gmail.com';
+			newUser.roles 		= ['ADMIN'];
+
+			UsersService.create(newUser);
 		}
 	}
 

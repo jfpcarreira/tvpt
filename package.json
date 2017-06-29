@@ -1,7 +1,7 @@
 {
-  "name": "testeforward",
+  "name": "tvpt",
   "version": "1.0.0",
-  "description": "Aplicação Node para fazer forward de um endereço para outro",
+  "description": "Aplicação Node para gerir o serviço TV da Sogra num endereço diferente",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,6 +17,7 @@
     "mongoose": "^4.9.6",
     "node-restful": "^0.2.6",
     "randomstring": "^1.1.5",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "serve-favicon": "^2.4.3"
   }
 }
